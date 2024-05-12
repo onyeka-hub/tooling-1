@@ -1,5 +1,5 @@
 FROM php:7-apache
-MAINTAINER Dare dare@zooto.io
+LABEL Dare dare@zooto.io
 
 RUN docker-php-ext-install mysqli
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -9,7 +9,7 @@ COPY start-apache /usr/local/bin
 RUN a2enmod rewrite
 
 # Copy application source
-COPY html /var/www
+COPY html /var/www/html
 RUN chown -R www-data:www-data /var/www
 
 CMD ["start-apache"]
